@@ -56,30 +56,24 @@ public class YourCarApp {
      */
     public static void main(String[] args) {
  
-        double distance = 0.0;
-        double speed = 0.0;
-        double fuel = 0.0;
+        double distance = 0;
+        double speed;
+        double fuel;
         double time = 0.0;
         
         Scanner input = new Scanner ( System.in );
         
+        System.out.print("How many gallons of gas is in your tank? (1-20) \n");
+            fuel = input.nextDouble();
+            
         System.out.print("Are you going on a trip? (Yes = 1 or No = 0)\n");
         int choice = input.nextInt();
-        
-        System.out.print("How many gallons of gas is in your tank? (1-20)");
-            fuel = input.nextDouble();
-            fuel++;
-        
-        if (choice < 0);
-                System.out.print("Choice must be 1 or 0");
-        if (choice > 1);
-                System.out.print("Choice must be 1 or 0");
-        
-        while (choice == 1)
+
+        while (choice == 1){
             
             System.out.print("How many miles are you going to travel?");
             distance = input.nextDouble();
-            distance++;
+            
             
             System.out.print("Enter Speed: ");
             speed = input.nextDouble();
@@ -87,18 +81,23 @@ public class YourCarApp {
             System.out.print("Want to add another leg to your trip? (Yes = 1 or No = 0)\n");
             choice = input.nextInt();
             
+            distance++;
+            time = (distance * speed) / 60;
+            fuel = fuel - distance / 20;
             
-            time = distance / speed*60;
-            fuel = fuel - distance/20;
-        
-    }
+            }
+            fuel++;
+            System.out.printf("You traveled about %.2f miles in about %.2f minutes.\n", distance, time);
     
-    System.out.print("You traveled about " + distance + " miles in about" + time + "minutes.")
-    
-    if (fuel > 0)
-    System.out.print("You have enough fuel to return.");            
-    
-    else
-    System.out.print("Your car will need more fuel to return.");
-        
+            if (fuel > 0){
+            System.out.print("You have enough fuel to return.\n");            
+            }
+            else{
+            System.out.print("Your car will need more fuel to return.\n");
+            }
+        while (choice > 1 || choice <0 ){
+        System.out.println("Must be a choice between 0 or 1 \n");
+        break;
+        }
+        }
 }
